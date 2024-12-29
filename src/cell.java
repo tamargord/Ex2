@@ -8,4 +8,11 @@ public class cell{
         }
 
     }
+    boolean isText(String){
+        if(text.charAt(0)=='='){
+            return false;
+
+        }
+    }
+
 }
