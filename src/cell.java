@@ -40,7 +40,7 @@ public class cell{
 
         if (index > 0 && index < text.length() - 1) {
             char currentChar = text.charAt(index);
-            if (currentChar == '*' || currentChar == '+' || currentChar == '-') {
+            if (currentChar == '*' || currentChar == '+' || currentChar == '/') {
 
                 if (Character.isLetterOrDigit(text.charAt(index - 1)) && Character.isLetterOrDigit(text.charAt(index + 1))) {
                     return true;
@@ -68,3 +68,24 @@ public class cell{
 
         return countBracket(brackets, index + 1, count1, count2);
     }
+    public double computeForm(String form){
+        for(int i=0;i<form.length();i++){
+            if(form.charAt(i)=='='){
+                i++;
+            }
+            if(isNumber(Character.toString(form.charAt(i))) {
+                if (!isNumber(Character.toString(form.charAt(i + 1)))||!isNumber(Character.toString(form.charAt(i - 1)))) {
+                    int num1 = Double.parseDouble(charAt(i));
+                }
+
+            }
+                if(form.charAt(i)=='+'){
+                    char plus='+';
+                }
+                if(form.charAt(i)=='-'){
+
+                }
+
+        }
+    }
+}
