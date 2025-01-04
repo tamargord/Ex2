@@ -50,7 +50,7 @@ public class Cell {
         return countBracket(brackets, 0, 0, 0);
     }
 
-    // recursive parentheses count method
+
     private static boolean countBracket(String brackets, int index, int count1, int count2) {
         if (index == brackets.length()) {
             return count1 == count2;
@@ -197,13 +197,10 @@ public class Cell {
         }
 
         if (isNumber(s)) {
-            // Handle as a number
             this.value = s;
         } else if (isForm(s)) {
-            // Handle as a formula
             this.value = s;
         } else if (isText(s)) {
-            // Handle as text
             this.value = s;
         } else {
             throw new IllegalArgumentException("Invalid value: " + s);
