@@ -3,12 +3,11 @@ public class Cell {
     String value;
 
     public static double computeForm(String form) {
-        // check if the input is a valid formula
         if (!isForm(form)) {
             throw new IllegalArgumentException("Invalid formula: " + form);
         }
 
-        // remove '=' if present
+
         if (form.startsWith("=")) {
             form = form.substring(1);
         }
@@ -26,25 +25,23 @@ public class Cell {
             return false;
         }
 
-        // remove  '=' if present
+
         if (text.startsWith("=")) {
             text = text.substring(1);
         }
 
-        // check for empty parentheses
+
         if (text.contains("()")) {
-            return false; // Invalid if empty parentheses exist
+            return false;
         }
 
-        // check for invalid components
         String[] tokens = text.split("[+\\-*/()]");
         for (String token : tokens) {
             if (!token.isEmpty() && !isNumber(token)) {
-                return false; // Invalid number found
+                return false;
             }
         }
 
-        // check for balanced parentheses
         return countBracket(text);
     }
 
@@ -56,16 +53,16 @@ public class Cell {
     // recursive parentheses count method
     private static boolean countBracket(String brackets, int index, int count1, int count2) {
         if (index == brackets.length()) {
-            return count1 == count2; // balanced if counts are equal
+            return count1 == count2;
         }
 
         char ch = brackets.charAt(index);
         if (ch == '(') {
-            count1++; // increment count for open parenthesis
+            count1++;
         } else if (ch == ')') {
-            count2++; // increment count for close parenthesis
+            count2++;
             if (count2 > count1) {
-                return false; // early exit for unmatched closing parenthesis
+                return false;
             }
         }
 
@@ -194,13 +191,6 @@ public class Cell {
         }
         return minIndex;
     }
-
-    public static void main(String[] args) {
-        String input = "=4+2*9+7*(8+9)*2+5*7+6+8+9";
-        double result = computeForm(input);
-        System.out.println("Result: " + result);
-    }
-
     public void setValue(String s) {
         if (s == null || s.isEmpty()) {
             throw new IllegalArgumentException("Value cannot be null or empty.");
@@ -218,6 +208,11 @@ public class Cell {
         } else {
             throw new IllegalArgumentException("Invalid value: " + s);
         }
+    }
+    public static void main(String[] args) {
+        String input = "=4+2*9+7*(8+9)*2+5*7+6+8+9";
+        double result = computeForm(input);
+        System.out.println("Result: " + result);
     }
 
 }

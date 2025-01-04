@@ -5,7 +5,7 @@ public class Spreadsheet {
         cells = new Cell[x][y];
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                cells[i][j] = new Cell(); // Initialize cells
+                cells[i][j] = new Cell();
             }
         }
     }
@@ -34,7 +34,7 @@ public class Spreadsheet {
             char ch = c.charAt(i);
             if (Character.isDigit(ch)) break;
 
-            if (ch < 'A' || ch > 'Z') return -1; // Invalid column
+            if (ch < 'A' || ch > 'Z') return -1;
             column = column * 26 + (ch - 'A');
         }
         return column;
@@ -120,8 +120,8 @@ public class Spreadsheet {
         sheet.set(1, 1, new Cell());
         sheet.get(1, 1).setValue("=4+2*3");
 
-        System.out.println(sheet.eval(0, 0)); // Should print 123
-        System.out.println(sheet.eval(1, 1)); // Should print 10 (evaluated formula)
+        System.out.println(sheet.eval(0, 0));
+        System.out.println(sheet.eval(1, 1));
 
         String[][] allEvaluations = sheet.evalAll();
         for (String[] row : allEvaluations) {
